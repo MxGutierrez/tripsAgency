@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CitiesController;
+use App\Http\Controllers\AgencyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +20,4 @@ Route::get('/', function () {
 });
 
 Route::resource('cities', CitiesController::class);
+Route::resource('agencies', AgencyController::class);

@@ -19,6 +19,7 @@
                 font-family: 'Nunito';
             }
         </style>
+        @yield ('header')
     </head>
     <!-- class="antialiased" for body, no idea what it does -->
     <body>

@@ -7,7 +7,7 @@
             @csrf
             @method('PUT')
             <div class="field">
-                <label class="label" for="name">City name:</label>
+                <label class="label" for="city_name">City name:</label>
                 <div class="control">
                     <input 
                         class="input" 
