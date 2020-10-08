@@ -18,4 +18,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('cities', [CitiesController::class, 'show']);
+Route::resource('cities', CitiesController::class);
