@@ -25,6 +25,9 @@
     </head>
     <!-- class="antialiased" for body, no idea what it does -->
     <body>
+    <div 
+        class="p-10">
         @yield ('content')
+    <div>
     </body>
 </html>

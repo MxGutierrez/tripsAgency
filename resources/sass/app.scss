@@ -3,3 +3,7 @@
 @tailwind components;
 
 @tailwind utilities;
+
+.title{
+  @apply font-mono text-lg;
+}
