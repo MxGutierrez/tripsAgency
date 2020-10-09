@@ -37,6 +37,10 @@ class AgencyController extends Controller
      */
     public function store(Request $request)
     {
+        request()->validate([
+            'agency_name' => 'required',
+            'agency_description' => 'required'
+        ]);
         $agency = new Agency();
         $agency->name = request('agency_name');
         $agency->description = request('agency_description');
@@ -62,9 +66,9 @@ class AgencyController extends Controller
      * @param  \App\Models\Agency  $agency
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Agency $agency)
     {
-        $agency = Agency::find($id);
+
         return view('agencies.edit', [
             'agency' => $agency
         ]);
@@ -77,10 +81,14 @@ class AgencyController extends Controller
      * @param  \App\Models\Agency  $agency
      * @return \Illuminate\Http\Response
      */
-    public function update($id)
+    public function update(Agency $agency)
     {
-        $agency = Agency::find($id);
+        request()->validate([
+            'agency_name' => 'required',
+            'agency_description' => 'required'
+        ]);
         $agency->name = request('agency_name');
+        $agency->description = request('agency_description');
         $agency->save();
 
         return redirect('/agencies');
@@ -92,9 +100,8 @@ class AgencyController extends Controller
      * @param  \App\Models\Agency  $agency
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Agency $agency)
     {
-        $agency = Agency::find($id);
         $agency->delete();
         return redirect('/agencies');
     }

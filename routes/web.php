@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CitiesController;
+use App\Http\Controllers\CityController;
 use App\Http\Controllers\AgencyController;
 
 /*
@@ -19,5 +19,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('cities', CitiesController::class);
+Route::resource('cities', CityController::class);
 Route::resource('agencies', AgencyController::class);

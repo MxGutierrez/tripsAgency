@@ -33,5 +33,6 @@
                 </div>
             </div>
         </form>
+        <a href="/agencies"><button class="button is-link">Cancel</button></a>
     </div>
 @endsection

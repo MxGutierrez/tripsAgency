@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cities;
+use App\Models\City;
 use Illuminate\Http\Request;
 
-class CitiesController extends Controller
+class CityController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class CitiesController extends Controller
      */
     public function index()
     {
-        $cities = Cities::all();
+        $cities = City::all();
 
         return view('cities.index', ['cities' => $cities]);
     }
@@ -37,7 +37,10 @@ class CitiesController extends Controller
      */
     public function store(Request $request)
     {
-        $city = new Cities();
+        request()->validate([
+            'city_name' => 'required'
+        ]);
+        $city = new City();
         $city->name = request('city_name');
         $city->save();
 
@@ -47,10 +50,10 @@ class CitiesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Cities  $cities
+     * @param  \App\Models\City  $city
      * @return \Illuminate\Http\Response
      */
-    public function show(Cities $cities)
+    public function show(City $city)
     {
         //
     }
@@ -58,27 +61,27 @@ class CitiesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Cities  $cities
+     * @param  \App\Models\City  $city
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(City $city)
     {
-        $city = Cities::find($id);
         return view('cities.edit', [
             'city' => $city
-        ]);
-    }
+        ]);}
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Cities  $cities
+     * @param  \App\Models\City  $city
      * @return \Illuminate\Http\Response
      */
-    public function update($id)
+    public function update(City $city)
     {
-        $city = Cities::find($id);
+        request()->validate([
+            'city_name' => 'required'
+        ]);
         $city->name = request('city_name');
         $city->save();
 
@@ -88,12 +91,11 @@ class CitiesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Cities  $cities
+     * @param  \App\Models\City  $city
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(City $city)
     {
-        $city = Cities::find($id);
         $city->delete();
         return redirect('/cities');
     }
