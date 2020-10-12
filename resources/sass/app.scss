@@ -5,5 +5,20 @@
 @tailwind utilities;
 
 .title{
-  @apply font-mono text-lg;
+  @apply text-4xl;
+};
+
+#flights-table tr th{
+  @apply px-8 py-4;
+};
+
+.table-head th{
+  @apply bg-blue-200;
+};
+
+#navBar a{
+  @apply p-4;
+}
+#navBar a:hover{
+  @apply bg-blue-400;
 }

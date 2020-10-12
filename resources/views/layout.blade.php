@@ -24,10 +24,28 @@
         @yield ('header')
     </head>
     <!-- class="antialiased" for body, no idea what it does -->
-    <body>
-    <div 
-        class="p-10">
-        @yield ('content')
-    <div>
+    <body class="
+        h-screen
+        bg-gray-200">
+        <nav 
+            id="navBar"
+            class="
+            bg-blue-300
+            flex">
+
+            <a href="/">Home</a>
+
+            <a href="/cities">Cities</a>
+
+            <a href="/agencies">Agencies</a>
+
+            <a href="/flights">Flights</a>
+
+        </nav>
+    <div
+        class="
+            flex-row">
+    @yield ('content')
+    </div>
     </body>
 </html>

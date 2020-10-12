@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Agency;
+use App\Models\City;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class AgencyController extends Controller
 {
@@ -26,7 +28,10 @@ class AgencyController extends Controller
      */
     public function create()
     {
-        return view('agencies.create');
+        $cities = City::all();
+        return view('agencies.create', [
+            'destinies' => $cities
+            ]);
     }
 
     /**
@@ -45,7 +50,8 @@ class AgencyController extends Controller
         $agency->name = request('agency_name');
         $agency->description = request('agency_description');
         $agency->save();
-
+        $agency->destinies()->attach(request('destinies'));
+        
         return redirect('/agencies');
     }
 

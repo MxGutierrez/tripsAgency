@@ -1,14 +1,9 @@
 @extends ('layout')
 
 @section ('content')
-<div >
-        <ul>
-            <li><a 
-                class="title"
-                href="/cities">Cities</a></li>
-            <li><a 
-            class="title"
-            href="/agencies">Agencies</a></li>
-        </ul> 
+<div class="flex-row" >
+    <h1 class="title text-center">
+        Next flights:
+    </h1>
 </div>
 @endsection

@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Agency extends Model
 {
     use HasFactory;
+
+    public function destinies()
+    {
+        return $this->belongsToMany('App\Models\City');
+    }
 }

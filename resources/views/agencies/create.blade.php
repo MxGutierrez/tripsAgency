@@ -28,6 +28,18 @@
                 </div>
             </div>
             <div class="field">
+                <label class="label" for="destinies">Destinies:</label>
+                <div class="control">
+                    <select
+                        name="destinies[]"
+                        multiple>
+                        @foreach ($destinies as $destiny)
+                            <option value={{ $destiny->id }}>{{$destiny->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+            <div class="field">
                 <div class="control">
                     <button class="button is-link" type="submit">Submit</button>
                 </div>

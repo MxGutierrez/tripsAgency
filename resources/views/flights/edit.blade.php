@@ -13,24 +13,6 @@
             @csrf
             @method('PUT')
             <div class="field">
-                <label class="label" for="agency_name">Edit agency name:</label>
-                <div class="control">
-                    <input 
-                        class="input" 
-                        type="text" 
-                        name="agency_name" 
-                        id="agency_name"c
-                        value="{{$agency->name}}">
-                </div>
-                <label class="label" for="name">Edit agency description:</label>
-                <div class="control">
-                    <input 
-                        class="input" 
-                        type="textarea" 
-                        name="agency_description" 
-                        id="agency_description"
-                        value="{{$agency->description}}"><input>
-                </div>
                 <div class="field">
                     <label class="label" for="destinies">Edit destinies:</label>
                     <div class="control">

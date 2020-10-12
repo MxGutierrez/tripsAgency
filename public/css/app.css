@@ -21235,8 +21235,30 @@ video {
 }
 
 .title {
-  font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  font-size: 1.125rem;
+  font-size: 2.25rem;
+}
+
+#flights-table tr th {
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.table-head th {
+  --bg-opacity: 1;
+  background-color: #bee3f8;
+  background-color: rgba(190, 227, 248, var(--bg-opacity));
+}
+
+#navBar a {
+  padding: 1rem;
+}
+
+#navBar a:hover {
+  --bg-opacity: 1;
+  background-color: #63b3ed;
+  background-color: rgba(99, 179, 237, var(--bg-opacity));
 }
 
 @media (min-width: 640px) {
