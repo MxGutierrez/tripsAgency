@@ -3,21 +3,24 @@
 @section('content')
 <div id="wrapper">
         <h1>New flight</h1>
-        <form method="POST" action="/flights">
+
+        <form method="POST" action="/agencies/{{$agency->id}}/flights/create">
             @csrf
-
-            <div class="field">
-                <label class="label" for="agency">Agency:</label>
-                <div class="control">
-                    <select
-                        name="agency">
-                        @foreach ($agencies as $agency)
-                            <option value={{ $agency->id }}>{{$agency->name}}</option>
-                        @endforeach
-                    </select>
+            @if ($agency->id != null)
+                <h1>Agency name: {{$agency->name}}</h1>
+            @else
+                <div class="field">
+                    <label class="label" for="agency">Agency:</label>
+                    <div class="control">
+                        <select
+                            name="agency">
+                            @foreach ($agencies as $agency)
+                                <option value={{ $agency->id }}>{{$agency->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
-            </div>
-
+            @endif
 
 
 

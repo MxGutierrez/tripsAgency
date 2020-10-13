@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Flight;
 use App\Models\Agency;
 use App\Models\City;
 use Illuminate\Http\Request;
@@ -74,9 +75,10 @@ class AgencyController extends Controller
      */
     public function edit(Agency $agency)
     {
-
+        $cities = City::all();
         return view('agencies.edit', [
-            'agency' => $agency
+            'agency' => $agency,
+            'destinies' => $cities
         ]);
     }
 
@@ -96,6 +98,7 @@ class AgencyController extends Controller
         $agency->name = request('agency_name');
         $agency->description = request('agency_description');
         $agency->save();
+        $agency->destinies()->attach(request('destinies'));
 
         return redirect('/agencies');
     }
@@ -110,5 +113,43 @@ class AgencyController extends Controller
     {
         $agency->delete();
         return redirect('/agencies');
+    }
+
+    public function createFlight(Agency $agency)
+    {
+        $cities = $agency->destinies;
+        $agencies = null;
+        
+        return view('flights.create', [
+            'cities' => $cities,
+            'agencies' => $agencies,
+            'agency' => $agency
+            ]);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeFlight(Request $request, Agency $agency)
+    {
+        request()->validate([
+            'city_id_origin' => 'required',
+            'city_id_destiny' => 'required',
+            'takeoff_time' => 'required',
+            'landing_time' => 'required'
+        ]);
+
+        Flight::create([
+            'agency_id' => $agency->id,
+            'city_id_origin' => request('origin'),
+            'city_id_destiny' => request('destiny'),
+            'takeoff_time' => request('takeoff_time'),
+            'landing_time' => request('landing_time')
+        ]);
+
+        return redirect('/flights');
     }
 }

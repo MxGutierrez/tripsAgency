@@ -26,16 +26,20 @@ class FlightController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Agency $agency)
     {
-        $flights = Flight::all();
-        $cities = City::all();
-        $agencies = Agency::all();
+        if ($agency->id != null){
+            $cities = $agency->destinies;
+            $agencies = null;
+        } else {
+            $cities = City::all();
+            $agencies = Agency::all();
+        }
+        
         return view('flights.create', [
             'cities' => $cities,
             'agencies' => $agencies,
-            'flights' => $flights
-
+            'agency' => $agency
             ]);
     }
 
@@ -47,6 +51,14 @@ class FlightController extends Controller
      */
     public function store(Request $request)
     {
+        request()->validate([
+            'agency_id' => 'required',
+            'city_id_origin' => 'required',
+            'city_id_destiny' => 'required',
+            'takeoff_time' => 'required',
+            'landing_time' => 'required'
+        ]);
+
         Flight::create([
             'agency_id' => request('agency'),
             'city_id_origin' => request('origin'),

@@ -20,6 +20,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('agencies/{agency}/flights/create', [AgencyController::class, 'createFlight']);
+Route::post('agencies/{agency}/flights/create', [AgencyController::class, 'storeFlight']);
 Route::resource('cities', CityController::class);
 Route::resource('agencies', AgencyController::class);
 Route::resource('flights', FlightController::class);
