@@ -4,9 +4,12 @@
 <div class="
     text-center
     mt-8">
-    <h1>Flights:</h1>
-    <a href="/">Go back</a><br>
-    <a href="flights/create">Create new flight</a>
+    <h1
+        class="
+            title
+            my-4">Next flights:</h1>
+{{--     <a href="/">Go back</a><br>
+    <a href="flights/create">Create new flight</a> --}}
     <table id="flights-table" class="mx-auto">
         <tr class="table-head">
             <th>Agency</th>

@@ -22,3 +22,9 @@
 #navBar a:hover{
   @apply bg-blue-400;
 }
+.agencyButton{
+  @apply bg-indigo-200;
+}
+.agencyButton:hover {
+  @apply bg-indigo-300;
+}

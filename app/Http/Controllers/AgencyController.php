@@ -64,7 +64,13 @@ class AgencyController extends Controller
      */
     public function show(Agency $agency)
     {
-        //
+
+        $flights = \DB::table('flights')->where('id',$agency->id)->orderBy('takeoff_time')->get();
+
+        return view('agencies.show', [
+            'agency' => $agency,
+            'flights' => $flights,
+        ]);
     }
 
     /**
@@ -136,8 +142,8 @@ class AgencyController extends Controller
     public function storeFlight(Request $request, Agency $agency)
     {
         request()->validate([
-            'city_id_origin' => 'required',
-            'city_id_destiny' => 'required',
+            'origin' => 'required',
+            'destiny' => 'required',
             'takeoff_time' => 'required',
             'landing_time' => 'required'
         ]);

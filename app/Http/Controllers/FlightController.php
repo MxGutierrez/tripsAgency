@@ -16,7 +16,7 @@ class FlightController extends Controller
      */
     public function index()
     {
-        $flights = Flight::all();
+        $flights = \DB::table('flights')->orderBy('takeoff_time')->get();
 
         return view('flights.index', ['flights' => $flights]);
     }

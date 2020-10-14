@@ -39,12 +39,14 @@
 
             <a href="/agencies">Agencies</a>
 
-            <a href="/flights">Flights</a>
+            {{-- <a href="/flights">Flights</a> --}}
 
         </nav>
     <div
         class="
-            flex-row">
+            flex
+            flex-col
+            items-center">
     @yield ('content')
     </div>
     </body>
