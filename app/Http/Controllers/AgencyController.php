@@ -142,19 +142,25 @@ class AgencyController extends Controller
     public function storeFlight(Request $request, Agency $agency)
     {
         request()->validate([
-            'origin' => 'required',
-            'destiny' => 'required',
+            'city_id_origin' => 'required',
+            'city_id_destiny' => 'required',
+            'takeoff_date' => 'required',
+            'landing_date' => 'required',
             'takeoff_time' => 'required',
             'landing_time' => 'required'
         ]);
-
+        dd('Hola :)');
+        $takeoff = request('takeoff_date')."T".request('takeoff_time');
+        $landing = request('landing_date')."T".request('landing_time');
+        dd([$takeoff, $landing]);
         Flight::create([
             'agency_id' => $agency->id,
             'city_id_origin' => request('origin'),
             'city_id_destiny' => request('destiny'),
-            'takeoff_time' => request('takeoff_time'),
-            'landing_time' => request('landing_time')
+            'takeoff_time' => $takeoff,
+            'landing_time' => $landing
         ]);
+
 
         return redirect('/flights');
     }

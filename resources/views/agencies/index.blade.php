@@ -22,7 +22,7 @@
     @foreach ($agencies as $agency)
        <div class="
         agencyButton
-        w-20
+        w-40
         border-solid
         border-2
         border-indigo-300

@@ -51,20 +51,27 @@ class FlightController extends Controller
      */
     public function store(Request $request)
     {
+
         request()->validate([
             'agency_id' => 'required',
             'city_id_origin' => 'required',
             'city_id_destiny' => 'required',
+            'takeoff_date' => 'required',
+            'landing_date' => 'required',
             'takeoff_time' => 'required',
             'landing_time' => 'required'
         ]);
+        
+        $takeoff = request('takeoff_date')."T".request('takeoff_time');
+        dd($takeoff);
+        $landing = request('landing_date')."T".request('landing_time');
 
         Flight::create([
             'agency_id' => request('agency'),
             'city_id_origin' => request('origin'),
             'city_id_destiny' => request('destiny'),
-            'takeoff_time' => request('takeoff_time'),
-            'landing_time' => request('landing_time')
+            'takeoff_time' => $takeoff,
+            'landing_time' => $landing
         ]);
 
         return redirect('/flights');
