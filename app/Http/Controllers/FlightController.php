@@ -117,6 +117,11 @@ class FlightController extends Controller
      * @param  \App\Models\Flight  $flight
      * @return \Illuminate\Http\Response
      */
+    public function delete(Flight $flight)
+    {
+        return view('flights.delete', $flight);
+    }
+    
     public function destroy(Flight $flight)
     {
         //

@@ -65,8 +65,7 @@ class AgencyController extends Controller
     public function show(Agency $agency)
     {
 
-        $flights = \DB::table('flights')->where('id',$agency->id)->orderBy('takeoff_time')->get();
-
+        $flights = \DB::table('flights')->where('agency_id',$agency->id)->orderBy('takeoff_time')->get();
         return view('agencies.show', [
             'agency' => $agency,
             'flights' => $flights,
@@ -141,18 +140,16 @@ class AgencyController extends Controller
      */
     public function storeFlight(Request $request, Agency $agency)
     {
-        request()->validate([
-            'city_id_origin' => 'required',
-            'city_id_destiny' => 'required',
-            'takeoff_date' => 'required',
-            'landing_date' => 'required',
+         request()->validate([
+            'origin' => 'required',
+            'destiny' => 'required',
+            'takeoff_date' => 'required|date_format:Y-m-d|date|before:"9999-01-01"',
+            'landing_date' => 'required|date_format:Y-m-d|date|before:"9999-01-01"',
             'takeoff_time' => 'required',
             'landing_time' => 'required'
         ]);
-        dd('Hola :)');
         $takeoff = request('takeoff_date')."T".request('takeoff_time');
         $landing = request('landing_date')."T".request('landing_time');
-        dd([$takeoff, $landing]);
         Flight::create([
             'agency_id' => $agency->id,
             'city_id_origin' => request('origin'),
@@ -162,6 +159,6 @@ class AgencyController extends Controller
         ]);
 
 
-        return redirect('/flights');
+        return redirect('/agencies/'.$agency->id);
     }
 }

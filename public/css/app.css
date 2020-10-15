@@ -21273,6 +21273,38 @@ video {
   background-color: rgba(163, 191, 250, var(--bg-opacity));
 }
 
+.control {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.field {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.button {
+  padding: 0.5rem;
+  border-style: solid;
+  border-radius: 0.25rem;
+  border-width: 2px;
+}
+
+.city-button {
+  font-size: 1.25rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  width: 100%;
+  text-align: center;
+}
+
+.city-button:hover {
+  --bg-opacity: 1;
+  background-color: #e2e8f0;
+  background-color: rgba(226, 232, 240, var(--bg-opacity));
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;

@@ -1,14 +1,23 @@
 @extends ('layout')
 
 @section('content')
-<div id="wrapper">
-        <h1>New flight</h1>
-
-        <form method="POST" action="/agencies/{{$agency->id}}/flights/create">
-            @csrf
+<div id="wrapper" class="w-1/2">
+        <div class="
+            text-center
+            my-4">
+            <h1>New flight</h1>
             @if ($agency->id != null)
                 <h1>Agency name: {{$agency->name}}</h1>
-            @else
+            @endif
+        </div>
+        <form 
+            class="flex
+                flex-col
+                justify-center
+                w-full"    
+        method="POST" action="/agencies/{{$agency->id}}/flights/create">
+            @csrf
+            @if ($agency->id == null)
                 <div class="field">
                     <label class="label" for="agency">Agency:</label>
                     <div class="control">
@@ -19,15 +28,12 @@
                             @endforeach
                         </select>
                     </div>
-                    @error('agency')
-                        <p>{{$errors->first('agency')}}</p>
-                    @enderror
-                </div>
-            @endif
 
-            @error('')
-                <p>error</p>
+                </div>
+                @error('agency')
+                <p>{{$errors->first('agency')}}</p>
             @enderror
+            @endif
 
             <div class="field">
                 <label class="label" for="destiny">Destiny:</label>
@@ -38,10 +44,11 @@
                             <option value={{ $destiny->id }}>{{$destiny->name}}</option>
                         @endforeach
                     </select>
-                    @error('destiny')
-                        <p>{{$errors->first('destiny')}}</p>
-                    @enderror
+
                 </div>
+                @error('destiny')
+                <p>{{$errors->first('destiny')}}</p>
+            @enderror
             </div>
 
 
@@ -55,10 +62,11 @@
                             <option value={{ $origin->id }}>{{$origin->name}}</option>
                         @endforeach
                     </select>
-                    @error('origin')
-                        <p>{{$errors->first('origin')}}</p>
-                    @enderror
+
                 </div>
+                @error('origin')
+                <p>{{$errors->first('origin')}}</p>
+            @enderror
             </div>
 
 
@@ -66,18 +74,24 @@
             <div class="field">
                 <label for="takeoff_date">Takeoff date:</label>
                 <div class="control">
-                    <input type="date" id="takeoff_date" name="takeoff_date">
-                    @error('takeoff_date')
-                        <p>{{$errors->first('takeoff_date')}}</p>
-                    @enderror
+                    <input type="date" id="takeoff_date" name="takeoff_date" max="9999-12-31">
+
                 </div>
+                @error('takeoff_date')
+                <p>{{$errors->first('takeoff_date')}}<br>
+                    @if ( $errors->first('takeoff_date') == "The takeoff date does not match the format Y-m-d.")
+                        If you are typing the date by hand, please follow the yyyy-mm-dd format. If you used the date 
+                        selector, don't chose a year larger that 9999.
+                    @endif
+                </p>
+            @enderror
             </div>
 
 
             <div class="field">
                 <label for="takeoff_time">Takeoff time:</label>
                 <div class="control">
-                    <input type="time" id="takeoff_time" name="takeoff_time">
+                    <input type="time" id="takeoff_time" name="takeoff_time" max="9999-12-31">
                 </div>
                 @error('takeoff_time')
                     <p>{{$errors->first('takeoff_time')}}</p>
@@ -95,6 +109,7 @@
                 <p>{{$errors->first('landing_date')}}</p>
             @enderror
             </div>
+
             <div class="field">
                 <label for="landing_time">Landing time:</label>
                 <div class="control">
@@ -109,16 +124,15 @@
 
 
             <div class="field">
-                <div class="control">
+                <div class="flex
+                flex-row
+                justify-between">
                     <button class="button is-link" type="submit">Submit</button>
+                    <a href="/agencies"><button class="button is-link">Cancel</button></a>
                 </div>
             </div>
 
 
         </form>
-
-
-
-        <a href="/agencies"><button class="button is-link">Cancel</button></a>
     </div>
 @endsection

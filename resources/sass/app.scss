@@ -28,3 +28,23 @@
 .agencyButton:hover {
   @apply bg-indigo-300;
 }
+
+.control {
+  @apply flex flex-col justify-center;
+}
+
+.field{
+  @apply my-4;
+}
+
+.button{
+  @apply p-2 border-solid rounded border-2;
+}
+
+.city-button{
+  @apply text-xl py-2 w-full text-center;
+}
+
+.city-button:hover{
+  @apply bg-gray-300 ;
+}

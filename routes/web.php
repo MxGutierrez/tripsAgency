@@ -22,6 +22,6 @@ Route::get('agencies/{agency}/flights/create', [AgencyController::class, 'create
 Route::post('agencies/{agency}/flights/create', [AgencyController::class, 'storeFlight']);
 Route::resource('cities', CityController::class);
 Route::resource('agencies', AgencyController::class);
-Route::get('flights/{flight}/edit', [FlightController::class, 'edit']);
+Route::get('flights/{flight}/edit', [FlightController::class, 'delete']);
 Route::put('flights/{flight}', [FlightController::class, 'update']);
 /* Route::resource('flights', FlightController::class); */

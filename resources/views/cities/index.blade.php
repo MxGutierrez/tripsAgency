@@ -18,7 +18,10 @@
             <a href="cities/create">Create new city</a>
         </div>
         @foreach ($cities as $city)
-            <a href="/cities/{{$city->id}}/edit"><h3>{{$city->name}}</h3></a>
+            <a class="city-button" 
+                href="/cities/{{$city->id}}/edit">
+                    <h3>{{$city->name}}</h3>
+            </a>
         @endforeach
     </div>
 @endsection
