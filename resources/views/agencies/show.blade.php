@@ -6,22 +6,25 @@
     flex
     flex-col
     items-center
-    w-1/2">
+    w-1/3">
   <h1>{{$agency->name}}</h1>
   <p>{{$agency->description}}</p>
   <div
     class="
       flex
-      justify-evenly
-      w-full">
+      justify-between
+      w-full
+      my-2">
     <a href="/agencies/">Go back</a>
     <a href="/agencies/{{$agency->id}}/flights/create">Create new flight</a>
   </div>
-  <div>
+  <div class="flex justify-between w-full">
     <h2>
       Next flights for {{$agency->name}}
     </h2>
-    <table id="flights-table" class="mx-auto">
+    <a href="/agencies/{{$agency->id}}/edit">Edit agency</a>
+  </div>
+    <table id="flights-table" class="mx-auto w-full" >
         <tr class="table-head">
             <th>Origin</th>
             <th>Destiny</th>
@@ -42,7 +45,7 @@
       </tr>
     @endforeach
     </table>
-  <div>
+  
 
 </div>
 

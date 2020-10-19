@@ -17,15 +17,21 @@
                         value="{{$city->name}}">
                 </div>
                 <div class="control">
-                    <button class="button is-link" type="submit">Submit</button>
+                    <button class="button is-link" type="submit">Update</button>
                 </div>
             </div>
         </form>
-        <a href="/cities"><button class="button is-link">Cancel</button></a>
-        <form method="POST" action="/cities/{{$city->id}}">
-            @csrf
-            @method('DELETE')
-            <button class="button is-link" type="submit">Delete city</button>
-        </form>
+        <div 
+        class="
+            flex
+            justify-between
+        ">
+            <a href="/cities"><button class="button is-link">Cancel</button></a>
+            <form method="POST" action="/cities/{{$city->id}}">
+                @csrf
+                @method('DELETE')
+                <button class="button is-link" type="submit">Delete city</button>
+            </form>
+        </div>
     </div>
 @endsection

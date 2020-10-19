@@ -128,11 +128,13 @@
                 flex-row
                 justify-between">
                     <button class="button is-link" type="submit">Submit</button>
-                    <a href="/agencies"><button class="button is-link">Cancel</button></a>
+                    <a class="button" href="/agencies/">Cancel</a>
                 </div>
             </div>
 
 
         </form>
+
+
     </div>
 @endsection

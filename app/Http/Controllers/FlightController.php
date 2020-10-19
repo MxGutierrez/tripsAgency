@@ -63,7 +63,6 @@ class FlightController extends Controller
         ]);
         
         $takeoff = request('takeoff_date')."T".request('takeoff_time');
-        dd($takeoff);
         $landing = request('landing_date')."T".request('landing_time');
 
         Flight::create([

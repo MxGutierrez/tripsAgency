@@ -21234,6 +21234,11 @@ video {
           animation: bounce 1s infinite;
 }
 
+h1 {
+  font-size: 1.875rem;
+  font-weight: 700;
+}
+
 .title {
   font-size: 2.25rem;
 }
