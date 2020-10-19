@@ -119,11 +119,14 @@ class FlightController extends Controller
      */
     public function delete(Flight $flight)
     {
-        return view('flights.delete', $flight);
+        return view('flights.delete', [
+            'flight' => $flight
+            ]);
     }
     
     public function destroy(Flight $flight)
     {
-        //
+        $flight->delete();
+        return redirect('/');
     }
 }

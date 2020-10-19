@@ -30,7 +30,7 @@
         </tr>
     @foreach ($flights as $flight)
       <tr 
-      onclick="window.location='flights/{{$flight->id}}/edit';"
+      onclick="window.location='/flights/{{$flight->id}}/edit';"
       class="
           hover:bg-gray-300
           cursor-pointer">

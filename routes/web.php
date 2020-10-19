@@ -24,4 +24,5 @@ Route::resource('cities', CityController::class);
 Route::resource('agencies', AgencyController::class);
 Route::get('flights/{flight}/edit', [FlightController::class, 'delete']);
 Route::put('flights/{flight}', [FlightController::class, 'update']);
+Route::delete('flights/{flight}', [FlightController::class, 'destroy']);
 /* Route::resource('flights', FlightController::class); */
